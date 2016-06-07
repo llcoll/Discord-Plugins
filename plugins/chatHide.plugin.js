@@ -22,7 +22,7 @@ chatHide.prototype.start = function () {
 									count == 0
 								}
 						});
-						if(Count == 1)$("#hide").click(function(){
+						if(count == 1)$("#hide").click(function(){
 							$("contents").hide();
 						});
 						else {
@@ -31,7 +31,7 @@ chatHide.prototype.start = function () {
 					});
 				});
 			}
-			allChat.onmouseout = function() {
+			allChat.on('mouseout', = function() {
 				if(contents.find('.hide').length == 1) {
 					$(this).find('.hide').empty().remove();
 				}
