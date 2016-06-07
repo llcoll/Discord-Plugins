@@ -18,8 +18,8 @@ messageHide.prototype.start = function () {
 				});
 			}
 			allChat.on('mouseout', = function() {
-				if(contents.find('.hide').length == 1) {
-					$(this).find('.hide').empty().remove();
+				if(contents.find('.hider').length == 1) {
+					$(this).find('.hider').empty().remove();
 				}
 			});
 		}
