@@ -23,7 +23,7 @@ chatHide.prototype.start = function () {
 									count == 0
 								}
 						});
-						if(clickCount == 1)
+						if(count == 1)
 						contents[0].style.color = "transparent !important"
 						else {
 							contents[0].style.color = {};
