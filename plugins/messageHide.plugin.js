@@ -12,12 +12,11 @@ messageHide.prototype.start = function () {
 				if(contents.find('.hider').length == 0) {
 					$(this).find(contents).append(hideBtn);
 					$('hider').on('click', function() {
-							$('contents').toggle();
-						}
-					};
-				});
-			}
-			allChat.on('mouseout', = function() {
+						$('contents').toggle();
+					});
+				}
+			});
+			allChat.on('mouseleave', function() {
 				if(contents.find('.hider').length == 1) {
 					$(this).find('.hider').empty().remove();
 				}
