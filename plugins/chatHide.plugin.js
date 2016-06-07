@@ -3,17 +3,16 @@
 var chatHide = function () {};
 
 chatHide.prototype.start = function () {
-	$(document).onmouseover = function() {
+	$(document).on('mouseover', function() {
 		if(1 == 1) {
 			var allChat = $('.messages .message-group');
-			var chatHeader = $('.messages .message-group .comment .message .body h2');
 			var contents = $('.chat>.content .messages .message-group .markup')
-			var hideBtn = '<span class="hider" style="cursor:pointer;color:#fff !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hider</span>';
-			allChat.onmouseover = function() {
-				if(chatHeader.find('.hide').length == 0) {
-					$(this).find(chatHeader).append(hideBtn);
+			var hideBtn = '<span class="hider" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hider</span>';
+			allChat.on('mouseover', function() {
+				if(contents.find('.hider').length == 0) {
+					$(this).find(contents).append(hideBtn);
 					$('#counter').data('count', 0);
-					$(this).find('.hide').click(function() {
+					$(this).find('.hider').click(function() {
 						$('#counter').html(function(){
 							var $this = $(this),
 								count = $this.data('count') + 1;
@@ -23,16 +22,17 @@ chatHide.prototype.start = function () {
 									count == 0
 								}
 						});
-						if(count == 1)
-						contents[0].style.color = "transparent !important"
+						if(Count == 1)$("#hide").click(function(){
+							$("contents").hide();
+						});
 						else {
-							contents[0].style.color = {};
+							$("contents").show();
 						}
 					});
 				});
 			}
 			allChat.onmouseout = function() {
-				if(chatHeader.find('.hide').length == 1) {
+				if(contents.find('.hide').length == 1) {
 					$(this).find('.hide').empty().remove();
 				}
 			});
@@ -45,10 +45,12 @@ chatHide.prototype.load = function () {};
 
 chatHide.prototype.unload = function () {
 	count == 0
+	$("contents").show();
 };
 
 chatHide.prototype.stop = function () {
 	count == 0
+	$("contents").show();
 };
 
 chatHide.prototype.onMessage = function () {
@@ -62,7 +64,7 @@ chatHide.prototype.getSettingsPanel = function () {
 };
 
 chatHide.prototype.getName = function () {
-    return "Message Hider";
+    return "Hide Messages";
 };
 
 chatHide.prototype.getDescription = function () {
