@@ -7,18 +7,18 @@ messageHide.prototype.start = function () {
 		if(1 == 1) {
 			var allChat = $('.messages .message-group');
 			var contents = $('.chat>.content .messages .message-group .markup')
-			var hideBtn = '<span class="hider" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hider</span>';
+			var hideBtn = '<span class="hide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hide</span>';
 			allChat.on('mouseover', function() {
-				if(contents.find('.hider').length == 0) {
+				if(contents.find('.hide').length == 0) {
 					$(this).find(contents).append(hideBtn);
-					$('hider').on('click', function() {
+					$('hide').on('click', function() {
 						$('contents').toggle();
 					});
 				}
 			});
 			allChat.on('mouseleave', function() {
-				if(contents.find('.hider').length == 1) {
-					$(this).find('.hider').empty().remove();
+				if(contents.find('.hide').length == 1) {
+					$(this).find('.hide').empty().remove();
 				}
 			});
 		}
