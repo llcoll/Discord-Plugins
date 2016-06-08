@@ -46,7 +46,8 @@ messageHide.prototype.onSwitch = function () {
 };
 
 messageHide.prototype.getSettingsPanel = function () {
-	return null;
+	return  '<label>Unhide All?: </label>' +
+			'<button onclick="$(\'contents\').show();">Yes</button>';
 };
 
 messageHide.prototype.getName = function () {
