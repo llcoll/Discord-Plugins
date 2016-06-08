@@ -15,12 +15,14 @@ messageHide.prototype.start = function () {
 				$(this).append(hideBtn);
 				$('.hide').on('click', function() {
 					$(this).siblings('span.txt').toggle();
+					//add some sort of broadcast of click
 					if($(this).find('.unhide').length == 0) {
 						$(this).append(unhideBtn);
 					}
 				});
 			}
 		});
+		//if broadcast of click, then remove .hide and content span (leaving only unhide), else
 		contents.on('mouseleave', function(e) {
 			if($(this,'span.txt').css('display') != 'none') {
 				if($(this).find('.hide').length == 1) {
@@ -50,7 +52,7 @@ messageHide.prototype.onSwitch = function () {
 
 messageHide.prototype.getSettingsPanel = function () {
 	return  '<label>Unhide All?: </label>' +
-			'<button onclick="$(\'contents\').show();">Yes</button>';
+		'<button onclick="$(\'contents\').show();">Yes</button>';
 };
 
 messageHide.prototype.getName = function () {
