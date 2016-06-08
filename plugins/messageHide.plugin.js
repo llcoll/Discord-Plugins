@@ -4,22 +4,25 @@ var messageHide = function () {};
 
 messageHide.prototype.start = function () {
 	$(document).on("mouseover.rpr", function(e) {
+		var allChat = $('.messages .message-group');
 		var contents = $('.chat>.content .messages .message-group .markup');
-		var message = $('<span>contents</span>')
-		var hideBtn = '<span class="hide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:10px;text-transform:uppercase;font-size:9px;padding:2px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hide</span>';
-		var unhideBtn = '<span class="unhide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:10px;text-transform:uppercase;font-size:9px;padding:2px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Unhide</span>';
+		var hideBtn = '<span class="hider" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hider</span>';
 		contents.on('mouseover', function() {
-			if($(this).find('.hide').length == 0) {
+			if($(this).find('.hider').length == 0) {
+				if($(this).find('span').length == 0) {
+					$(this).wrapInner('<span class="txt"></span>');
+				}
 				$(this).append(hideBtn);
-				$('.hide').on('click', function() {
-					$(this).parent().toggle();
+				$('.hider').on('click', function() {
+					$(this).siblings('span.txt').toggle();
 				});
 			}
 		});
-		contents.on('mouseleave', function() {
-			if($(this).find('.hide').length == 1) {
-				$('.hide').empty().remove();
-				$('.unhide').empty().remove();
+		contents.on('mouseleave', function(e) {
+			if($(this,'span.txt').css('display') != 'none') {
+				if($(this).find('.hider').length == 1) {
+					$('.hider',this).empty().remove();
+				}
 			}
 		});
 	});
@@ -43,8 +46,7 @@ messageHide.prototype.onSwitch = function () {
 };
 
 messageHide.prototype.getSettingsPanel = function () {
-	return  '<label>Unhide All?: </label>' +
-		'<button onclick="$(\'contents\').show();">Yes</button>';
+	return null;
 };
 
 messageHide.prototype.getName = function () {
