@@ -7,6 +7,7 @@ messageHide.prototype.start = function () {
 		var contents = $('.chat>.content .messages .message-group .markup');
 		var hideBtn = '<span class="hide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hide</span>';
 		var unhideBtn = '<span class="unhide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:10px;text-transform:uppercase;font-size:9px;padding:2px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Unhide</span>';
+		var event = new CustomEvent(clicked, { $(contents).append(unhideBtn); "detail": "Clicked" });
 		contents.on('mouseover', function() {
 			if($(this).find('.hide').length == 0) {
 				if($(this).find('span').length == 0) {
@@ -15,8 +16,13 @@ messageHide.prototype.start = function () {
 				$(this).append(hideBtn);
 				$('.hide').on('click', function() {
 					$(this).siblings('span.txt').toggle();
+					document.dispatchEvent(clicked);
 				});
 			}
+		});
+		document.addEventListener(clicked, function(e) {
+ 			$(contents).append(unhideBtn);
+ 			console.log(e.detail); // Prints "Example of an event"
 		});
 		contents.on('mouseleave', function(e) {
 			if($(this,'span.txt').css('display') != 'none') {
