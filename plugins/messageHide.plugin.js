@@ -6,7 +6,6 @@ messageHide.prototype.start = function () {
 	$(document).on("mouseover.rpr", function(e) {
 		var contents = $('.chat>.content .messages .message-group .markup');
 		var hideBtn = '<span class="hide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:5px;text-transform:uppercase;font-size:10px;padding:3px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Hide</span>';
-		var unhideBtn = '<span class="unhide" style="cursor:pointer;color:rgba(255,255,255,.8) !important;position:relative;top:-1px;margin-left:10px;text-transform:uppercase;font-size:9px;padding:2px 5px;box-sizing:border-box;background:rgba(0,0,0,0.4)">Unhide</span>';
 		contents.on('mouseover', function() {
 			if($(this).find('.hide').length == 0) {
 				if($(this).find('span').length == 0) {
@@ -14,28 +13,21 @@ messageHide.prototype.start = function () {
 				}
 				$(this).append(hideBtn);
 				$('.hide').on('click', function() {
-					if($(this).siblings('span.txt').css('opacity') != '0') {
+					if($(this).siblings('span.txt').css('opacity') !== '0') {
 						$(this).siblings('span.txt').css('opacity','0');
 					}
 					else {
-						$(this).siblings('span.txt').css('opacity','auto');
-					}
-					//add some sort of broadcast of click
-					if($(this).find('.unhide').length == 0) {
-						$(this).append(unhideBtn);
+						$(this).siblings('span.txt').css('opacity','inherit');
 					}
 				});
 			}
 		});
-		//if broadcast of click, then remove .hide and content span (leaving only unhide), else
 		contents.on('mouseleave', function(e) {
-			//if($(this,'span.txt').css('display') != 'none') {
-				if($(this).find('.hide').length == 1) {
-					$('.hide',this).empty().remove();
-				}
-			//}
+			if($(this).find('.hide').length == 1) {
+				$('.hide',this).empty().remove();
+			}
 		});
-	}
+	});
 	console.log('~messageHide initiated~');
 };
 
