@@ -14,7 +14,12 @@ messageHide.prototype.start = function () {
 				}
 				$(this).append(hideBtn);
 				$('.hide').on('click', function() {
-					$(this).siblings('span.txt').toggle();
+					if($(this).siblings('span.txt').css('opacity') != '0') {
+						$(this).siblings('span.txt').css('opacity','0');
+					}
+					else {
+						$(this).siblings('span.txt').css('opacity','auto');
+					}
 					//add some sort of broadcast of click
 					if($(this).find('.unhide').length == 0) {
 						$(this).append(unhideBtn);
@@ -24,13 +29,13 @@ messageHide.prototype.start = function () {
 		});
 		//if broadcast of click, then remove .hide and content span (leaving only unhide), else
 		contents.on('mouseleave', function(e) {
-			if($(this,'span.txt').css('display') != 'none') {
+			//if($(this,'span.txt').css('display') != 'none') {
 				if($(this).find('.hide').length == 1) {
 					$('.hide',this).empty().remove();
 				}
-			}
+			//}
 		});
-	});
+	}
 	console.log('~messageHide initiated~');
 };
 
