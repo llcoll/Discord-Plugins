@@ -10,9 +10,9 @@ Attach.prototype.start = function() {
 	var detached = $('#bd-customcss-detach-container #bd-customcss-detach-controls-buttons');
 	var detachedBtn = $('#editor-detached .btn');
 	var attachBtn = '<span class="attach" style="cursor:pointer;color:#fff !important;position:relative;width:90px;height:30px;margin-top:8px;font-size:19px">Attach</span>';
-	if($(document).find('#editor-detached').length == 1) {
+	if($(document).find('#bd-customcss-detach-controls-buttons').length == 1) {
 		if(detached.find('.attach').length == 0) {
-			$(this).find('#bd-customcss-detach-container #bd-customcss-detach-controls-buttons button').append(attachBtn);
+			$(this).find('#bd-customcss-detach-container #bd-customcss-detach-controls-buttons').append(attachBtn);
 			$(this).find('.attach').click(function() {
 				//attach somehow - $('#editor-detached');
 			});
