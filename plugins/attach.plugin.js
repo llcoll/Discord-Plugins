@@ -14,8 +14,7 @@ Attach.prototype.start = function() {
 		if(detached.find('.attach').length == 0) {
 			$(this).find('#bd-customcss-detach-container #bd-customcss-detach-controls-buttons button').append(attachBtn);
 			$(this).find('.attach').click(function() {
-				var detachedBtn = $(this).parent().find('.attachBtn');
-				$('#editor-detached');
+				//attach somehow - $('#editor-detached');
 			});
 		}
 		if($(document).find('#editor-detached').length == 0) {
@@ -23,7 +22,7 @@ Attach.prototype.start = function() {
 				$(this).find('.attach').empty().remove();
 		}
 	}
-console.log('Attach started.');
+console.log('Attach initiated');
 }
 };
 
